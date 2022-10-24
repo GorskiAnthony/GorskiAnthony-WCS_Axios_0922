@@ -11,7 +11,11 @@ const App = () => {
           <p>Nous allons voir le fonctionnement d'une API avec react</p>
           <p>
             Comment ? En utilisant
-            <a href="https://www.npmjs.com/package/axios" target="_blank">
+            <a
+              href="https://www.npmjs.com/package/axios"
+              target="_blank"
+              rel="noreferrer"
+            >
               <code>axios</code>
             </a>
           </p>
