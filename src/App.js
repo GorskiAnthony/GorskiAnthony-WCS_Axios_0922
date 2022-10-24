@@ -1,6 +1,27 @@
 import React, { Fragment } from "react";
+import axios from "axios";
 
 const App = () => {
+  const API = "https://excuser.herokuapp.com/v1/excuse/developers/";
+  const [joke, setJoke] = React.useState(
+    "It must be a hardware issue, not my code problem."
+  );
+
+  const getJoke = () => {
+    axios
+      .get(API)
+      .then((res) => {
+        setJoke(res.data[0].excuse);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleClick = () => {
+    getJoke();
+  };
+
   return (
     <Fragment>
       <header>
@@ -24,11 +45,9 @@ const App = () => {
           <h1>Une blague de développeur ?</h1>
           <div>
             <div className="render">
-              <span className="quote">
-                My aunt told me to fix her computer, so I got late today.
-              </span>
+              <span className="quote">{joke}</span>
             </div>
-            <button>Une autre blague</button>
+            <button onClick={handleClick}>Une autre blague</button>
           </div>
         </section>
       </main>
